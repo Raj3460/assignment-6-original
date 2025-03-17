@@ -36,7 +36,7 @@
        
  
 <body>
-       <header class="bg-slate-100 mb-7  sticky top-0 z-50 shadow-md">
+       <header id="header" class="bg-slate-100 mb-7  sticky top-0 z-50 shadow-md">
               <nav class="py-3  flex justify-between items-center w-11/12 mx-auto">
                      <div class="flex items-center gap-1">
                             <h1 class="font-bold">English</h1>
@@ -61,7 +61,7 @@
        </header>
        <main >
               <!-- thumbnel section -->
-             <section id="thambnelSection" class="w-11/12 mx-auto mb-10 ">
+             <section id="thambnelSection" class="w-11/12 mx-auto my-10 ">
                <!-- overall div -->
                <div class="flex justify-between items-center space-x-20">
                      <!-- first -->
@@ -69,10 +69,10 @@
                             <h1 class="text-4xl font-bold"><span class="text-sky-500">English</span> is Easy!!</h1>
                             <p class="font-semibold text-gray-600">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে<br> যাবে অন্য একটি Level এ</p>
 
-                            <input class="rounded-sm pl-1" type="text" placeholder="Enter Your Name"><br>
-                            <input class="rounded-sm pl-1" type="text" placeholder="   .............."> <br>
+                            <input id="name" class="rounded-sm pl-1" type="text" placeholder="Enter Your Name"><br>
+                            <input id="pin" class="rounded-sm pl-1" type="pin" placeholder="your pin is = 123456"> <br>
 
-                            <button class="btn text-white bg-[#3D26C7]">Get Started</button>
+                            <button id="getStartbtn" class="btn text-white bg-[#3D26C7]">Get Started</button>
 
                      </div>
                      <!-- 2nd -->
@@ -85,7 +85,7 @@
              </section>
 
              <!-- section 2 dynamic -->
-              <section  id="dynamicSection"  >
+              <section  id="dynamicSection" class=" pt-32" >
                      <div  class="w-11/12 mx-auto">
                             <h1 class="font-bold text-3xl text-center"> <span class="text-sky-500">Let's</span> Learn Vocabularies</h1>
                           
@@ -97,6 +97,17 @@
 
 
                       <div id="wordContainer" class="w-11/12 mx-auto grid grid-cols-3 bg-slate-100 p-3 rounded-xl gap-3">
+
+
+                            <!-- sppiner
+                            <div id="sppiner" class="bg-white">
+                                   <span class="loading loading-spinner loading-xs"></span>
+                                   <span class="loading loading-spinner loading-sm"></span>
+                                    <span class="loading loading-spinner loading-md"></span>
+                                    <span class="loading loading-spinner loading-lg"></span>
+                                    <span class="loading loading-spinner loading-xl"></span>
+                                   
+                            </div> -->
 
                                           
                              <div class=" bg-slate-100 text-center py-16 space-y-2 col-span-full">
@@ -119,7 +130,7 @@
 <!-- <button class="btn" onclick="my_modal_1.showModal()">open modal</button> -->
 <dialog id="wordDetails" class="modal">
   <div class="modal-box">
-       <div id="wordDetailsContainer" class="space-y-3">
+       <div id="wordDetailsContainer" class="space-y-3 border border-gray-100 hover:bg-sky-50 p-4 rounded-md">
               
 
        </div>
@@ -147,36 +158,48 @@
 
 
               <!-- section accordion faq -->
-               <section id="faqSection" class="w-11/12 mx-auto my-10 ">
+               <section id="faqSection" class="w-11/12 mx-auto pt-20 ">
                      <h1 class=" my-10 text-center font-bold text-3xl"> <span class="text-sky-500">Frequently</span> Asked Questions</h1>
                      <div class="collapse collapse-plus bg-base-100 border border-base-300">
                             <input type="radio" name="my-accordion-3" checked="checked" />
                             <div class="collapse-title font-semibold">the difference between var, let, and const.</div>
-                            <div class="collapse-content text-sm">aikhane er ans er likte hobe</div>
+                            <div class="collapse-content text-sm">VAR,LET AND CONST are used to declere variables .There are many difference among its.
+                                   Var is older variables and it has lot of problems.It can be reassingnment anywhere in function ,It does not follow the scope .so var could be create so many problems during code. <br>
+                                   LET is block scope . It can declere just inside block. Let can be reassing in the block but it can not be reassingn outsite the block. <br>
+                                   CONST is block scope . if i set const's value we cannot reassingn it . 
+
+
+                            </div>
                           </div>
                          
                      <div class="collapse collapse-plus bg-base-100 border border-base-300">
                             <input type="radio" name="my-accordion-3" checked="checked" />
                             <div class="collapse-title font-semibold">the difference between map(), forEach(), and filter().</div>
-                            <div class="collapse-content text-sm"> var is older code .it might b</div>
+                            <div class="collapse-content text-sm"> map(), forEach(), and filter is array methods of JavaScript.
+                            map() is array methods of js .It's create a new array  where each element is transformed by a spacific function. IT is return a new array.and main array const not change . <br>
+                            forEach() is like of (for loop) . It does not return anything . <br>
+                            filter() depends on certain condition . it is create a new .and it is not change the main array.     
+                            </div>
                           </div>
                          
                      <div class="collapse collapse-plus bg-base-100 border border-base-300">
                             <input type="radio" name="my-accordion-3" checked="checked" />
                             <div class="collapse-title font-semibold">explain arrow functions and how they are different from regular functions.</div>
-                            <div class="collapse-content text-sm">arrow function is morden function </div>
+                            <div class="collapse-content text-sm">ARROW FUNCTION AND REGULAR FuNCTION  is similar kind of mathods in JavaScript.But there are many different between arrow and regular function . <br>
+                            arrow function is more mordan than regular function . the syntax for writing it is much more concise then that of regular function. It can be declere in one line .  <br> But regular function is not so concise , it could be very big .  
+                            </div>
                           </div>
                          
                      <div class="collapse collapse-plus bg-base-100 border border-base-300">
                             <input type="radio" name="my-accordion-3" checked="checked" />
                             <div class="collapse-title font-semibold">how JavaScript Promises work?</div>
-                            <div class="collapse-content text-sm">aikhane er ans er likte hobe</div>
+                            <div class="collapse-content text-sm">JavaScript Promises are a way to handle asynchronous operations. it is also more manageable and readable way compared to traditional callback functions.  </div>
                           </div>
                          
                      <div class="collapse collapse-plus bg-base-100 border border-base-300">
                             <input type="radio" name="my-accordion-3" checked="checked" />
                             <div class="collapse-title font-semibold">how closures work in JavaScript?</div>
-                            <div class="collapse-content text-sm">aikhane er ans er likte hobe</div>
+                            <div class="collapse-content text-sm">Closures in JavaScript are a powerful feature that allows a function to access variables from its outer scope, even after that outer function has finished executing. This is possible because functions in JavaScript create their own scope, and when a function is defined inside another function, it forms a closure.</div>
                           </div>
                          
                </section>

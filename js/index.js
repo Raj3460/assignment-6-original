@@ -1,3 +1,49 @@
+document.getElementById("header").style.display = "none"
+              document.getElementById("faqSection").style.display = "none"
+              document.getElementById("dynamicSection").style.display = "none"
+              document.getElementById("thambnelSection").style.display = "block"
+
+document.getElementById("getStartbtn").addEventListener("click",
+       function(event){
+              event.preventDefault();
+             const name =  document.getElementById("name").value;
+             const pin =  document.getElementById("pin").value;
+             const convertedNumberPin = parseInt(pin)
+             
+             if(name !== ""){
+              if(name){
+                     if(convertedNumberPin=== 123456){
+                            console.log("it is okay you can code")
+
+
+                            document.getElementById("header").style.display = "block"
+              document.getElementById("faqSection").style.display = "block"
+              document.getElementById("dynamicSection").style.display = "block"
+              document.getElementById("thambnelSection").style.display = "none"
+
+                     }
+                     else{
+                            alert("Invalid pin!!! Please give the valid PIN")
+
+                     }
+
+              }
+              else{
+                     alert("Invalid name,please input correct name!")
+              }
+
+             }
+             else{
+              alert("please give any name")
+             }
+
+             
+
+
+       }
+)
+
+
 // header er faq butter kaj kormo 
 document.getElementById("faq").addEventListener("click",
        function(event){
@@ -6,9 +52,9 @@ document.getElementById("faq").addEventListener("click",
               document.getElementById("logout").classList.remove("active1");
               document.getElementById("learn").classList.remove("active1");
               
-              document.getElementById("faqSection").style.display = "block"
-              document.getElementById("dynamicSection").style.display = "none"
-              document.getElementById("thambnelSection").style.display = "none"
+              document.getElementById("faqSection").scrollIntoView({ behavior: "smooth" })
+              // document.getElementById("dynamicSection").style.display = "none"
+              // document.getElementById("thambnelSection").style.display = "none"
        }
 )
 // header er learn button er kaj kormo
@@ -20,9 +66,9 @@ document.getElementById("learn").addEventListener("click",
               document.getElementById("faq").classList.remove("active1");
 
 
-              document.getElementById("faqSection").style.display = "none"
-              document.getElementById("dynamicSection").style.display = "block"
-              document.getElementById("thambnelSection").style.display = "none"
+              // document.getElementById("faqSection").style.display = "none"
+              document.getElementById("dynamicSection").scrollIntoView({ behavior:"smooth"})
+              // document.getElementById("thambnelSection").style.display = "none"
               
        }
 )
@@ -30,14 +76,16 @@ document.getElementById("learn").addEventListener("click",
 document.getElementById("logout").addEventListener("click",
        function(event){
               event.preventDefault();
-              document.getElementById("logout").classList.add("active1");
+              // document.getElementById("logout").classList.add("active1");
               document.getElementById("faq").classList.remove("active1");
               document.getElementById("learn").classList.remove("active1");
+              window.location.reload()
 
 
-              document.getElementById("faqSection").style.display = "none"
-              document.getElementById("dynamicSection").style.display = "none"
-              document.getElementById("thambnelSection").style.display = "block"
+              // document.getElementById("header").style.display = "none"
+              // document.getElementById("faqSection").style.display = "none"
+              // document.getElementById("dynamicSection").style.display = "none"
+              // document.getElementById("thambnelSection").style.display = "block"
               
               
        }
@@ -167,7 +215,7 @@ const wordContainerShowDisplay = (words) =>{
                                      <h2 class="font-semibold">"${element.meaning} / ${element.pronunciation}"</h2> 
                                      </div>
                                      <div class="flex justify-between items-centler">
-                                     <button onclick = "loadWords(${element.id})" class="btn bg-green-500" >
+                                     <button onclick = "loadWords(${element.id})" class="btn " >
                                                  <i   class=" w-3/4 fa-solid fa-circle-info "></i>
                                           </button>
                                      <i  class="fa-solid fa-volume-high border border-red-100 p-2 bg-gray-100 rounded-sm"></i>
@@ -204,15 +252,19 @@ const loadWords = (synonymWordsId) =>{
 
 }
 const displayLoadWords =(symWords)=>{
+       console.log(symWords)
+
+
        
        document.getElementById("wordDetails").showModal();
        const detailsContainer = document.getElementById("wordDetailsContainer");
+       
 
        detailsContainer.innerHTML=`
 
        <h2 class="text-2xl font-bold">${symWords.data.word} (<i class="fa-solid fa-microphone"></i> : ${symWords.data.pronunciation})</h2>
               <h3 class=" font-semibold"> Meaning <br>
-              ${symWords.data.meaning}
+              ${symWords.data.meaning==="" ? symWords.data.meaning : "অর্থ পাওয়া যায় নি"}
               </h3>
 
               <h3 class=" font-semibold"> Example <br>
@@ -222,10 +274,21 @@ const displayLoadWords =(symWords)=>{
 
               <div class=" font-semibold">  
               <p>সমার্থক শব্দ গুলো</p>
-              <div class="flex gap-3">
-                     <h3 class="border-1 p-1 px-2 bg-sky-200 rounded-sm">${symWords.data.synonyms[0]}</h3>
-                     <h3 class="border-1 p-1 px-2 bg-sky-200 rounded-sm">${symWords.data.synonyms[1]}</h3>
-                     <h3 class="border-1 p-1 px-2 bg-sky-200 rounded-sm">${symWords.data.synonyms[2]}</h3>
+              <div  class="flex gap-3">
+       
+
+
+              <div  class=" p-1 bg-sky-200 rounded-sm border ">
+              ${symWords.data.synonyms[0]? symWords.data.synonyms[0] :" "}
+              </div>
+
+              <div class=" p-1 bg-sky-200 rounded-sm border">
+              ${symWords.data.synonyms[1]? symWords.data.synonyms[1] : ""}
+              </div>
+
+              <div class=" p-1 bg-sky-200 rounded-sm border">
+              ${symWords.data.synonyms[2]? symWords.data.synonyms[2] : ""}
+              </div>
                      
               </div>
                </div>
@@ -233,14 +296,21 @@ const displayLoadWords =(symWords)=>{
        `
 
 }
+// 
 
 
 
 
 
 
+const makeHide = (id)=>{
+       document.getElementById(id).style.display = "none"
 
+}
+const makeShow = (id)=>{
+       document.getElementById(id).style.display = "block"
 
+}
 
 
 
